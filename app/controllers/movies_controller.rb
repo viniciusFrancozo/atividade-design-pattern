@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/1
   def show
-    render json: @movie, status: :ok
+    render json: {movie: @movie, movie_billboard: @movie_genre}, status: :ok
   end
 
   # POST /movies
@@ -49,6 +49,8 @@ class MoviesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
       @movie = Movie.find(params[:id])
+      @movie_genre = MovieDecorator.new(@movie)
+      @movie_genre = @movie_genre.with_drama
     end
 
     # Only allow a list of trusted parameters through.

@@ -22,8 +22,8 @@ class Movies::Create
     end
 
     def with_summary(summary)
-        @movie.summary = summary
-        self
+      @movie.summary = summary
+      self
     end
 
     def with_release_date(release_date)
